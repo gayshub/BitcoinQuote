@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" http-equiv="refresh" content="5" >
+  <title>xx俱乐部</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+</head>
+<body>
+	<div class="container is-fullhd"> 
+
+			
+			<div  style="padding-left: 15px;padding-top: 40px">
+				<table class="table is-striped is-fullwidth is-narrow" > 
+					<thead>
+						<tr>
+							<th>币种</th>
+							<th>币种名称</th>
+							<th>最新成交价</th>
+							<th>24H变化</th>
+							<th>交易额</th>
+							<th>发行量</th>
+							<th>流通量</th>
+							<th>总市值</th>
+
+						</tr>
+					</thead>
+
+					<tbody id="market">
+						
+
+						{% for item in arr %}
+						<tr>
+							<th>
+							<img src="{{ item.iconUrl }}" height="20" width="20"> <span>{{ item.currency }}</span>
+							</th>
+							<th> {{ item.name }}</th>
+							<th>
+							￥{{ item.price }}
+							</th>
+
+
+							<th v-if="{{ item.change }} > 0.0" class="tag is-success"> +{{ item.change }}% </th>
+							<th v-else class="tag is-danger"> {{ item.change }}% </th>
+							<th> {{ item.vol }} </th>
+							<th> {{ item.maxSupply }} </th>
+							<th> {{ item.supply }} </th>
+							<th> {{ item.marketCap }} </th>
+						</tr>
+						{% endfor %}
+
+					</tbody>
+
+
+				</table>
+
+		</div> <!--padding15px-->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    new Vue({
+        el: '#market',
+        data: {
+        },
+        methods: {
+
+
+        }
+
+    })
+
+</script>
+</body>
+</html>
